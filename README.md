@@ -30,17 +30,9 @@ To use the Dockerfiles provided in this repository, follow these steps:
 
 5. Build the Docker image using the `docker build` command:
 
-   ```bash
-   docker build -t myapp .
-   ```
-
    Replace the image name with the desired name for your Docker image.
 
 6. Run the Docker container using the `docker run` command:
-
-   ```bash
-   docker run -d -p 8080:80 myapp
-   ```
 
    Replace `5000` with the desired port mapping if applicable, and with the name of your Docker image.
 
