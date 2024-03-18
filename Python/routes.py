@@ -1,9 +1,8 @@
-from flask import request, jsonify, Blueprint
-from Python.models.task import Task
+from models.task import TODO
 from database import db
+from app import *
 
 
-task_bp =Blueprint('task', '__name__')
 #Flask To-Do-List
 
 #Create task
