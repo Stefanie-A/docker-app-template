@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify, Blueprint
+from flask import Flask, jsonify, Blueprint
 from flask_migrate import Migrate
 from database import * 
 
@@ -9,7 +9,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///database.db"
 db.init_app(app)
 migrate = Migrate(app, db)
 
-@app.route('/')
+@app.route('/home')
 def docker():
      return jsonify("Dockerfile Tutorial")
 

@@ -1,5 +1,5 @@
 from models.task import TODO
-from flask import request, jsonify, Blueprin
+from flask import request, jsonify
 from database import db
 from app import *
 
@@ -7,7 +7,7 @@ from app import *
 #Flask To-Do-List
 
 #Create task
-@todo_bp.route('/create-task', methods="POST")
+@todo_bp.route("/create-task/", methods=["POST"])
 def Create_task():
     data = request.get_json()
     task = data.get('Task')
@@ -17,18 +17,18 @@ def Create_task():
     if task is None and note is None and date is None:
         return jsonify({"Message": "Please enter a task"}), 401
         
-    task = TODO (
+    todo = TODO (
         Task = task,
         Note = note,
         Date = date
     )
 
-    db.session.add(task)
+    db.session.add(todo)
     db.session.commit()
 
     return jsonify({"Message": "Task successfully created"}), 201
 
-@todo_bp.route('/search-task', methods="GET")
+@todo_bp.route('/search-task', methods=["GET"])
 def search_task():
     task = TODO.query.all()
     task_search = [ ]
@@ -42,7 +42,7 @@ def search_task():
         })
     return jsonify(task_search)
 
-@todo_bp.route('/update-task/<int: task_id>', methods="UPDATE")
+@todo_bp.route('/update-task/<int: task_id>', methods=["PUT"])
 def update_task(task_id):
     data = request.get_json()
     task = TODO.query.get(task_id)
@@ -57,7 +57,7 @@ def update_task(task_id):
     db.session.commit()
     return jsonify({"Messges": "Task updated!"}), 202
 
-@todo_bp.route('/delete-task/<int: task_id>', methods="DELETE")
+@todo_bp.route('/delete-task/<int: task_id>', methods=["DELETE"])
 def delete_task(task_id):
     task = TODO.query.get(task_id)
     if not task:
