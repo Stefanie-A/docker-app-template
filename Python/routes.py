@@ -1,7 +1,8 @@
 from models.task import TODO
-from flask import request, jsonify
+from flask import request, jsonify, Blueprint
 from database import db
-from app import *
+from app import todo_bp
+
 
 
 #Flask To-Do-List
@@ -42,7 +43,7 @@ def search_task():
         })
     return jsonify(task_search)
 
-@todo_bp.route('/update-task/<int: task_id>', methods=["PUT"])
+@todo_bp.route("/update-task/<int:task_id>", methods=["PUT"])
 def update_task(task_id):
     data = request.get_json()
     task = TODO.query.get(task_id)
@@ -72,3 +73,4 @@ def delete_task(task_id):
         return jsonify({"Error": str(e)}), 400
     
     return True
+
