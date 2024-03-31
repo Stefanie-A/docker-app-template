@@ -1,11 +1,10 @@
-from flask import Flask, jsonify, Blueprint
+from flask import Flask, jsonify, request, Blueprint
 from flask_migrate import Migrate
 from database import db
+from routes import todo_bp
+
 
 app = Flask(__name__)
-
-
-todo_bp =Blueprint('task', '__name__')
 app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///database.db"
 db.init_app(app)
 migrate = Migrate(app, db)

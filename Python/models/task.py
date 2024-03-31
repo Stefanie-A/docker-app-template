@@ -3,7 +3,8 @@ from database import db
 
 class TODO(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    Task = db.Column(db.String(80), unique=True, nullable=False)
-    Note = db.Column(db.String(120), unique=True, nullable=False)
-    Date = db.Column(db.Date, nullable=False)
+    task = db.Column(db.String(80), nullable=False)
+    note = db.Column(db.String(120), nullable=False)
+    date = db.Column(db.Date, nullable=False)
+
 
