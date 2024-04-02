@@ -11,7 +11,7 @@ migrate = Migrate(app, db)
 
 @app.route('/')
 def Docker():
-     return jsonify("Dockerfile Tutorial")
+     return jsonify({"Dockerfile Tutorial"})
 
 app.register_blueprint(todo_bp)
 if __name__ == '__main__':
