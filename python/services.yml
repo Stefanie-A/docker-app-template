@@ -1,0 +1,19 @@
+version: "2"
+services:
+    backend:
+        image: my-app
+        container_name: my-appC
+        volumes:
+            - /root/app/docker-app-template/python:/app
+        tty: true
+        restart: always
+
+    nginx:
+        image: nginx
+        container_name: nginx
+        ports:
+            - "80:80"
+        volumes:
+            - ./nginx/etc/conf.d/default.conf:/etc/nginx/conf.d/default.conf
+        tty: true
+        restart: always
