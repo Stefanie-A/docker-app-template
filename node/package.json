@@ -1,0 +1,11 @@
+{
+  "name": "simple-node-server",
+  "version": "1.0.0",
+  "description": "A simple Node.js server",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "author": "~U.S.A~",
+  "license": "MIT"
+}

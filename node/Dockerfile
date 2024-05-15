@@ -1,9 +1,13 @@
-FROM node:18-apline
+FROM node:latest
 
-WORKDIR /app
+WORKDIR /usr/src/app
 
 EXPOSE 5000
 
+COPY package.json .
+
+RUN npm install
+
 COPY . .
 
-CMD npm
+CMD ["npm", "start"]
